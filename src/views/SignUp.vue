@@ -105,7 +105,7 @@ export default {
      event.preventDefault();
 
      this.axios
-    .post(`http://localhost:8000/api/v1/auth/users/`, {'username': this.username, 'password': this.password,'email':this.email })
+    .post(`https://mustavf.pythonanywhere.com/api/v1/auth/users/`, {'username': this.username, 'password': this.password,'email':this.email })
     .then(response => {console.log(response) ;this.$router.push('/') })
     .catch(function(error) {
     if (error.response && error.response.status === 400) {

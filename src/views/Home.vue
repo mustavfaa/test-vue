@@ -165,23 +165,23 @@ export default {
 		
 		getDATA1(){
 			axios
-            .get('http://127.0.0.1:8000/api/v1/test/?genres=ONHOLD', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
+            .get('https://mustavf.pythonanywhere.com/api/v1/test/?genres=ONHOLD', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
             .then(response=> (this.items0=response.data))
             
 		},
 		getDATA2(){
 			axios
-            .get('http://127.0.0.1:8000/api/v1/test/?genres=INPROGRESS', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
+            .get('https://mustavf.pythonanywhere.com/v1/test/?genres=INPROGRESS', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
             .then(response=> (this.items1=response.data))
 		},
 		getDATA3(){
 			axios
-            .get('http://127.0.0.1:8000/api/v1/test/?genres=NEEDSREVIEW', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
+            .get('https://mustavf.pythonanywhere.com/api/v1/test/?genres=NEEDSREVIEW', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
             .then(response=> (this.items2=response.data))
 		},
 		getDATA4(){
 			axios
-            .get('http://127.0.0.1:8000/api/v1/test/?genres=APPROVED', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
+            .get('https://mustavf.pythonanywhere.com/api/v1/test/?genres=APPROVED', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
             .then(response=> (this.items3=response.data))
 		},
 		onDrop1: function(collection1, dropResult1) {
@@ -190,7 +190,7 @@ export default {
 			this[collection1] = applyDrag0(this[collection1], dropResult1);
 			saveItems1(collection1, this[collection1]);	
 			axios
-            .put('http://127.0.0.1:8000/api/v1/test/update/'+this.idDROP,{'genres': this.Drop1})
+            .put('https://mustavf.pythonanywhere.com/api/v1/test/update/'+this.idDROP,{'genres': this.Drop1})
             console.log(this.idDROP)
    
 		},
@@ -199,7 +199,7 @@ export default {
 			this[collection] = applyDrag1(this[collection], dropResult);
 			saveItems1(collection, this[collection]);			
 			axios
-            .put('http://127.0.0.1:8000/api/v1/test/update/'+this.idDROP,{'genres': this.Drop2})
+            .put('https://mustavf.pythonanywhere.com/api/v1/test/update/'+this.idDROP,{'genres': this.Drop2})
             console.log(this.idDROP)
 
 		},
@@ -207,7 +207,7 @@ export default {
 			this.hideAddACardTextarea();
 			this[collection] = applyDrag2(this[collection], dropResult);
 			saveItems2(collection, this[collection],
-			axios.put('http://127.0.0.1:8000/api/v1/test/update/'+this.idDROP,{'genres': this.Drop3}) );
+			axios.put('https://mustavf.pythonanywhere.com/api/v1/test/update/'+this.idDROP,{'genres': this.Drop3}) );
 			console.log('ueiowagjflirojegsopw')
 		},
 		onDrop4: function(collection, dropResult) {
@@ -217,7 +217,7 @@ export default {
 		},
 		getConsole(){
 			axios
-            .get('http://127.0.0.1:8000/api/v1/customers/', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
+            .get('https://mustavf.pythonanywhere.com/api/v1/customers/', { headers: { Authorization: 'Bearer '+ this.$store.state.accessToken } })
             .then(response=> (this.apiDATA=response.data.data.[0].user.username,this.userID=response.data.data.[0].id,console.log(this.apiDATA),console.log(this.userID)))
 			
 		},
@@ -246,7 +246,7 @@ export default {
 				this[collection].push({ header: this.newCardHeader1 });
 				saveItems0(collection, this[collection]);
 				this.hideAddACardTextarea();
-				axios.post(`http://127.0.0.1:8000/api/v1/test/create/`,{'text':this.newCardHeader1,'genres':2,'USER':this.userID  })
+				axios.post(`https://mustavf.pythonanywhere.com/api/v1/test/create/`,{'text':this.newCardHeader1,'genres':2,'USER':this.userID  })
 				location.href='/';
 			}
 		},
@@ -255,7 +255,7 @@ export default {
 				this[collection].push({ header: this.newCardHeader2 });
 				saveItems0(collection, this[collection]);
 				this.hideAddACardTextarea();
-				axios.post(`http://127.0.0.1:8000/api/v1/test/create/`,{'text':this.newCardHeader2,'genres':3,'USER':this.userID  })
+				axios.post(`https://mustavf.pythonanywhere.com/api/v1/test/create/`,{'text':this.newCardHeader2,'genres':3,'USER':this.userID  })
 				location.href='/';
 			}
 		},
@@ -264,7 +264,7 @@ export default {
 				this[collection].push({ header: this.newCardHeader3 });
 				saveItems0(collection, this[collection]);
 				this.hideAddACardTextarea();
-				axios.post(`http://127.0.0.1:8000/api/v1/test/create/`,{'text':this.newCardHeader3,'genres':4,'USER':this.userID  })
+				axios.post(`https://mustavf.pythonanywhere.com/api/v1/test/create/`,{'text':this.newCardHeader3,'genres':4,'USER':this.userID  })
 				location.href='/';
 			}
 		},
@@ -273,7 +273,7 @@ export default {
 				this[collection].push({ header: this.newCardHeader4 });
 				saveItems0(collection, this[collection]);
 				this.hideAddACardTextarea();
-				axios.post(`http://127.0.0.1:8000/api/v1/test/create/`,{'text':this.newCardHeader4,'genres':5,'USER':this.userID  })
+				axios.post(`https://mustavf.pythonanywhere.com/api/v1/test/create/`,{'text':this.newCardHeader4,'genres':5,'USER':this.userID  })
 				location.href='/';
 			}
 		},
@@ -284,7 +284,7 @@ export default {
 			this[collection].splice(index, 1);
 			saveItems0(collection, this[collection]);
 			axios
-            .delete('http://127.0.0.1:8000/api/v1/test/delete/'+item.id)
+            .delete('https://mustavf.pythonanywhere.com/api/v1/test/delete/'+item.id)
 		},
 		hideAddACardTextarea: function() {
 			this.newCardHeader = '';

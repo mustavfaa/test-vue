@@ -10,7 +10,7 @@ Vue.use(Vuex)
 Vue.use(VueAxios, axios)
 const store = new Vuex.Store({
     state: {
-        backendUrl: "http://127.0.0.1:8000/api/v1",
+        backendUrl: "https://mustavf.pythonanywhere.com/api/v1",
         allsearch:'',
         cart:[],
         products:[],
@@ -62,7 +62,7 @@ const store = new Vuex.Store({
         },
         dataLike({state}){
           axios
-            .post('http://127.0.0.1:8000/api/v1/customers/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
+            .post('https://mustavf.pythonanywhere.com/api/v1/customers/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
             .then(response=>{state.sifr=response.data.data.[0].likecus} )
             
           
@@ -74,7 +74,7 @@ const store = new Vuex.Store({
         
         saveProfile({commit,state}){
               axios
-                .get('http://127.0.0.1:8000/api/v1/customers/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
+                .get('https://mustavf.pythonanywhere.com/api/v1/customers/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
                 .then(response=> response.data.data)
                 .then(nameuserNew => {
                 commit('updateProfile', nameuserNew)
@@ -83,7 +83,7 @@ const store = new Vuex.Store({
           },
           Likelike({commit,state}){
               axios
-                .get('http://127.0.0.1:8000/api/v1/customer/like/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
+                .get('https://mustavf.pythonanywhere.com/api/v1/customer/like/', { headers: { Authorization: 'Bearer '+ state.accessToken } })
                 .then(response=> response.data)
                 .then(likeNew => {
                 commit('updateLike', likeNew)
@@ -117,7 +117,7 @@ const store = new Vuex.Store({
           //  .post('http://127.0.0.1:8000/api/v1/customer/like/create', {headers: {'Content-Type': 'application/json'}})
           addToLike({ state },mds) {
             axios
-            .post(`http://127.0.0.1:8000/api/v1/customer/like/create`, {'likeCustomer': state.userid, 'likeNEW': mds.id })
+            .post(`https://mustavf.pythonanywhere.com/api/v1/customer/like/create`, {'likeCustomer': state.userid, 'likeNEW': mds.id })
             .then(response => {console.log(response) ; })
             .catch(err => { console.error(err) })
 
